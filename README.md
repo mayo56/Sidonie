@@ -1,0 +1,5 @@
+# Sidonie
+
+```sh
+npm i
+```
