@@ -1,11 +1,12 @@
-import { Client, Events } from "discord.js";
+import { ActionRowBuilder, Client, Events, StringSelectMenuBuilder, GatewayIntentBits } from "discord.js";
 import * as dotenv from "dotenv";
 import Welcome from "./WelCome";
+import Spy from "./spy";
 
 dotenv.config({ path: `${__dirname}/../config/.env` });
 
 const sidonie = new Client({
-    intents: 3243772,
+    intents: Object.keys(GatewayIntentBits) as any,
 });
 
 sidonie.on(Events.ClientReady, () => {
@@ -13,5 +14,9 @@ sidonie.on(Events.ClientReady, () => {
 });
 
 Welcome(sidonie);
+
+sidonie.on("messageCreate", message => {
+    Spy(message, sidonie)
+})
 
 sidonie.login(process.env.SIDONIE_TOKEN);
