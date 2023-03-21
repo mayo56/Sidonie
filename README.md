@@ -1,5 +1,0 @@
-# Sidonie
-
-```sh
-npm i
-```
